@@ -27,9 +27,7 @@ as inspiration.
 
 ### Exercise 3.1 
 Create a module (ModuleSingle) with a single thread and a method. 
-
 The thread should notify the method each 2 ms by use of an event and static sensitivity. 
-
 The method should increment a counter of the type sc_uint<4> and print the value and current simulation time. 
 Limit thesimulation time to 200 ms. 
 
@@ -42,8 +40,7 @@ B, Aack, Back).
 Thread A notifies event A every 3 ms and thread B notifies event B every 2 ms.
 After notification, the thread waits for an acknowledge (event Aack and Back). If acknowledge is
 not received after a timeout period (A = 3 ms and B = 2 ms) the threads continue notifying event A
-or B. 
-The method A alternates between waiting on event A and B. 
+or B. The method A alternates between waiting on event A and B. 
 
 Use dynamic sensitivity in the method by calling next_trigger() to define the next event to trigger the method. Let the method
 print the current simulation time and the notified events.
@@ -141,7 +138,7 @@ class InAdapter: public sc_fifo_out_if <T>, public sc_module
             // Output sample data on negative edge of clock
 
             while (ready == SC_LOGIC_0)
-            wait(clock.posedge_event());
+                wait(clock.posedge_event());
             wait(clock.posedge_event());
             data.write(value);
             channel.write(0); // Channel number

@@ -1,7 +1,10 @@
 # Build dirs
-
 **/build
 **/build-clang
+.tup
+
+# vscode
+.vscode
 
 # Prerequisites
 *.d
