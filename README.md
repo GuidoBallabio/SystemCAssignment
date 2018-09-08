@@ -28,14 +28,13 @@ as inspiration.
 ### Exercise 3.1 
 Create a module (ModuleSingle) with a single thread and a method. 
 The thread should notify the method each 2 ms by use of an event and static sensitivity. 
-The method should increment a counter of the type sc_uint<4> and print the value and current simulation time. 
+The method should increment a counter of the type `sc_uint<4>` and print the value and current simulation time. 
 Limit thesimulation time to 200 ms. 
 
 Describe what happens when the counter wraps around?
 
 ### Exercise 3.2 
-Create a module (ModuleDouble) with two threads (A, B), one method (A) and four events (A,
-B, Aack, Back). 
+Create a module (ModuleDouble) with two threads (A, B), one method (A) and four events (A, B, Aack, Back). 
 
 Thread A notifies event A every 3 ms and thread B notifies event B every 2 ms.
 After notification, the thread waits for an acknowledge (event Aack and Back). If acknowledge is
@@ -77,10 +76,18 @@ typedef struct
 } TCPHeader;
 ```
 
-Extend your model to have two consumers receiving TCP packages on port 1 and 2. The producer
-must be rewritten to send packages out on more ports. As illustrated below:
+Extend your model to have two consumers receiving TCP packages on port 1 and 2. The producer must be rewritten to send packages out on more ports. As illustrated below:
 `sc_port<sc_fifo_out_if<TCPHeader *>,0> out;`
 
+Further, the producer code must be rewritten to send the TCP packet to all connected fifo channels as
+shown below:
+
+```c++
+for (int i = 0; i < out.size(); i++)
+{
+    out[i]->write(package);
+}
+```
 ### Exercise 3.4 
 Create a cycle accurate communication model of a master and slave module that uses the
 Avalon Streaming Bus interface (ST). Simulate that a master are transmitting data to a slave
