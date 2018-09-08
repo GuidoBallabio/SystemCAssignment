@@ -1,0 +1,15 @@
+WARNINGS += -Wall
+
+CFLAGS += -O2
+CFLAGS += $(WARNINGS)
+
+ifndef CLANG_COMPILER
+CXX = g++
+else
+CXX = clang++
+# clang++ solves LINK_FLAGS = -lstdc++
+endif
+
+!cc = |> $(CXX) $(CFLAGS) -c %f -o %o |> %B.o
+!ar = |> ar crs %o %f |>
+!link = |> $(CXX) $(LINK_FLAGS) %f -o %o |>
