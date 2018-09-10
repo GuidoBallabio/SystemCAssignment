@@ -2,6 +2,7 @@
 **/build
 **/build-clang
 .tup
+**/.tup
 
 # vscode
 .vscode

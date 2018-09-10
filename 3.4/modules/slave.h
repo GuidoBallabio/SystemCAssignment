@@ -8,7 +8,7 @@
 SC_MODULE(Slave)
 {
 
-  sc_in<bool> clk, valid;
+  sc_in<bool> clk, valid, reset;
   sc_out<bool> ready;
   sc_in<sc_int<DATA_BITS>> data;
   sc_in<sc_int<ERROR_BITS>> error;

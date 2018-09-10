@@ -5,15 +5,17 @@ void Master::generate()
 {
     while (true)
     {
-        wait(ready);
+        wait(ready.posedge_event());
         wait(CLK_PERIOD * READY_LATENCY, SC_NS);
 
-        for (uint i = 0; ready->read() && (i < (random_int() % 4)); i++) // 4 is just a small number to make smaller bursts for ease of debuggability
+        for (int i = 0; ready && !reset && stimulus_in; i++) //stimulus just for simulation 
         {
-            wait(clk.posedge());
+            wait(clk.posedge_event());
             valid->write(true);
-            data->write(random_int() % (1 << DATA_BITS));
+            data->write(i % (1 << DATA_BITS));
         }
+
+        valid->write(false);
     }
 }
 

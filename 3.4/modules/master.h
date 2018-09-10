@@ -9,7 +9,8 @@
 SC_MODULE(Master)
 {
 
-  sc_in<bool> clk, ready;
+  sc_in<bool> stimulus_in; //just for simulation
+  sc_in<bool> clk, ready, reset;
   sc_out<bool> valid;
   sc_out<sc_int<DATA_BITS>> data;
   sc_out<sc_int<ERROR_BITS>> error;

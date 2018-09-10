@@ -1,24 +1,32 @@
 #include <iostream>
 
 #include "slave.h"
-#include "../util/tools.h"
 
 void Slave::consume()
 {
     ofstream f;
     f.open("consumed.txt");
-    
+
     while (true)
     {
-        wait(clk.posedge());
-
-        ready->write(true);
-        while (valid->read() && ((random_int() % 4) < 3)) //ready 3/4 of the time
+        if (reset == true)
         {
-            wait(clk.posedge());
-            f << data->read() << endl;
+            ready->write(false);
         }
-        ready->write(false);
+
+        wait(clk.posedge_event());
+        ready->write(true);
+        for (int i = 0; i < READY_LATENCY && !reset; i++)
+            wait(clk.posedge_event());
+
+        while(valid == false && !reset)
+            wait(clk.posedge_event());
+
+        cout << "before read: " << valid << " " << reset << endl;
+        while (valid == true && !reset){
+            f << data->read() << endl;
+            wait(clk.posedge_event());
+        }
     }
 
     f.close();
