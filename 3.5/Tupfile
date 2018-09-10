@@ -1,0 +1,5 @@
+include_rules
+LINK_FLAGS += -lsystemc
+
+: foreach *.cpp |> !cc |> {objs}
+: {objs} modules/*.o util/*.o |> !link |> main

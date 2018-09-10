@@ -1,0 +1,4 @@
+include_rules
+LINK_FLAGS += -lsystemc
+
+: foreach *.cpp |> !cc |> {objs}

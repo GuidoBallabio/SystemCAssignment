@@ -3,20 +3,17 @@
 
 #include <systemc.h>
 
+#include "adapter.h"
 #include "../util/param.h"
 
 SC_MODULE(Master)
 {
-
   sc_in<bool> stimulus_in; //just for simulation
-  sc_in<bool> clk, ready, reset;
-  sc_out<bool> valid;
-  sc_out<sc_int<DATA_BITS>> data;
-  sc_out<sc_int<ERROR_BITS>> error;
-  sc_port<sc_signal_out_if<sc_int<CHANNEL_BITS>>, 0> out_ch;
-
+  Adapter<sc_int<DATA_BITS>> *data;
+ 
   SC_CTOR(Master)
   {
+    data = new Adapter<sc_int<DATA_BITS>>("adapter");
     SC_THREAD(generate);
   }
 
