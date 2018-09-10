@@ -6,7 +6,7 @@ void Master::generate()
     while (true)
     {
         wait(ready);
-        wait(CLK_PERIOD * READY_LATENCY);
+        wait(CLK_PERIOD * READY_LATENCY, SC_NS);
 
         for (uint i = 0; ready->read() && (i < (random_int() % 4)); i++) // 4 is just a small number to make smaller bursts for ease of debuggability
         {
