@@ -11,7 +11,7 @@ class Adapter : public sc_fifo_out_if<T>, public sc_module
 public:
   sc_in<bool> clk, ready, reset;
   sc_out<bool> valid;
-  sc_out<sc_int<DATA_BITS>> data;
+  sc_out<T> data;
   sc_out<sc_int<ERROR_BITS>> error;
   sc_port<sc_signal_out_if<sc_int<CHANNEL_BITS>>, 0> out_ch;
 
@@ -19,25 +19,29 @@ public:
 
   void write(const T &value)
   {
-    while (true)
+    if (reset == false)
     {
-      if (reset == false)
-      {
-        cout << "in" << endl;
 
-        wait(ready.posedge_event());
-        wait(CLK_PERIOD * (READY_LATENCY - 1), SC_NS);
+      while (ready == false)
         wait(clk.posedge_event());
-        cout << "write" << endl;
 
-        valid->write(true);
-        data->write(value % (1 << DATA_BITS));
+      for (int i = 0; (i < READY_LATENCY - 1) && !reset; i++)
         wait(clk.posedge_event());
-        valid->write(false);
-      }
-      else
-        wait(clk.posedge_event());
+
+      if (reset)
+        return;
+
+      valid->write(true);
+      data->write(value % (1 << DATA_BITS));
+      error->write(0);
+      for (int j = 0; j < out_ch.size(); j++)
+        out_ch[j]->write(0);
+
+      wait(clk.posedge_event());
+      valid->write(false);
     }
+    else
+      wait(clk.posedge_event());
   }
 
 private:

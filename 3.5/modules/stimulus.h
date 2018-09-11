@@ -37,7 +37,7 @@ void Stimulus::test_cases()
 
   stimulus_out->write(true);
   wait(CLK_PERIOD * 10, SC_NS);
-  while (random_bool(0.8))
+  while (random_bool(0.95))
   {
     cout << "reset!" << endl;
     reset->write(true);

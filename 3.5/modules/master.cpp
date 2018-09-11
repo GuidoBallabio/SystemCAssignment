@@ -8,12 +8,9 @@ void Master::generate()
         int i = 0;
         while (stimulus_in)
         {
-            cout << "easy" << endl;
-
-            wait(CLK_PERIOD * (random_int() % 10), SC_NS);
-            cout << "b";
+            wait(CLK_PERIOD * (random_int() % 5), SC_NS); //max burst = 5
             data->write(i++);
-            cout << "a";
         }
+        wait(CLK_PERIOD, SC_NS);
     }
 }

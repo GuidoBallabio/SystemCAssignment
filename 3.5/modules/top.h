@@ -19,6 +19,7 @@ SC_MODULE(Top)
   sc_signal<sc_int<CHANNEL_BITS>> channels[MAX_CHANNEL];
   
   
+  Adapter<sc_int<DATA_BITS>> *adapter;
   Master *master;
   Slave *slave;
   Monitor *monitor;
@@ -28,9 +29,11 @@ SC_MODULE(Top)
   {
     stimulus = new Stimulus("stimulus");
     monitor = new Monitor("monitor");
+    adapter = new Adapter<sc_int<DATA_BITS>>("adapter");
     master = new Master("master");
     slave = new Slave("slave");
 
+    master->data(*adapter);
     master->data->clk(clk);
     master->data->valid(valid);
     master->data->reset(reset);
@@ -41,7 +44,6 @@ SC_MODULE(Top)
       master->data->out_ch(channels[i]);
 
     master->stimulus_in(stimulus_ch);
-
 
     slave->clk(clk);
     slave->valid(valid);
