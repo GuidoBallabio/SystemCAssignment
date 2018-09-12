@@ -20,7 +20,15 @@ void Slave::consume()
 
             while (valid == true && !reset)
             {
-                f << data->read() << endl;
+                f << data->read() << " received at simulation time " << sc_time_stamp() << endl;
+				in_ch->read();
+				// Simulate error handling
+				int errorno = error->read();
+				if (errorno != 0)
+				{
+					f << "Error occured with code ERRNO " << error << " at simulation time " << sc_time_stamp() << endl;
+				}
+
                 wait(clk.posedge_event());
             }
         }

@@ -1,78 +1,68 @@
-0
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-0
-1
-2
-5
-6
-7
-8
-9
-10
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-28
-29
-30
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-48
-49
-50
-51
-52
-53
-54
-55
-60
-61
-62
-63
-64
-65
-67
-68
-69
-70
+0 received at simulation time 60 ns
+1 received at simulation time 140 ns
+2 received at simulation time 160 ns
+3 received at simulation time 180 ns
+4 received at simulation time 240 ns
+5 received at simulation time 320 ns
+6 received at simulation time 380 ns
+7 received at simulation time 400 ns
+8 received at simulation time 480 ns
+9 received at simulation time 560 ns
+10 received at simulation time 620 ns
+11 received at simulation time 640 ns
+12 received at simulation time 660 ns
+13 received at simulation time 680 ns
+14 received at simulation time 720 ns
+15 received at simulation time 780 ns
+16 received at simulation time 860 ns
+0 received at simulation time 1060 ns
+1 received at simulation time 1080 ns
+2 received at simulation time 1120 ns
+3 received at simulation time 1140 ns
+4 received at simulation time 1160 ns
+5 received at simulation time 1180 ns
+7 received at simulation time 1280 ns
+8 received at simulation time 1300 ns
+9 received at simulation time 1320 ns
+10 received at simulation time 1340 ns
+11 received at simulation time 1420 ns
+12 received at simulation time 1500 ns
+15 received at simulation time 1600 ns
+16 received at simulation time 1620 ns
+17 received at simulation time 1700 ns
+18 received at simulation time 1740 ns
+19 received at simulation time 1820 ns
+20 received at simulation time 1860 ns
+23 received at simulation time 2040 ns
+24 received at simulation time 2080 ns
+25 received at simulation time 2120 ns
+26 received at simulation time 2140 ns
+27 received at simulation time 2160 ns
+33 received at simulation time 2440 ns
+34 received at simulation time 2460 ns
+35 received at simulation time 2480 ns
+37 received at simulation time 2580 ns
+41 received at simulation time 2740 ns
+42 received at simulation time 2800 ns
+43 received at simulation time 2860 ns
+44 received at simulation time 2880 ns
+45 received at simulation time 2900 ns
+46 received at simulation time 2920 ns
+47 received at simulation time 2940 ns
+48 received at simulation time 2960 ns
+49 received at simulation time 2980 ns
+51 received at simulation time 3120 ns
+52 received at simulation time 3140 ns
+53 received at simulation time 3200 ns
+54 received at simulation time 3240 ns
+55 received at simulation time 3280 ns
+56 received at simulation time 3300 ns
+58 received at simulation time 3420 ns
+59 received at simulation time 3440 ns
+60 received at simulation time 3460 ns
+61 received at simulation time 3540 ns
+62 received at simulation time 3580 ns
+63 received at simulation time 3620 ns
+66 received at simulation time 3800 ns
+67 received at simulation time 3820 ns
+68 received at simulation time 3840 ns
